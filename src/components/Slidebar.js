@@ -134,7 +134,7 @@ class PersistentDrawerLeft extends React.Component {
           </div>
           <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            {['in', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
@@ -151,6 +151,8 @@ class PersistentDrawerLeft extends React.Component {
             ))}
           </List>
         </Drawer>
+
+        {/* -------------- LADO DERECHO ----------- */}
         <main
           className={classNames(classes.content, {
             [classes.contentShift]: open,

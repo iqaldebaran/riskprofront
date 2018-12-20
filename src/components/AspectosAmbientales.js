@@ -7,19 +7,9 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: purple,
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
+
 
 const styles = theme => ({
   root: {

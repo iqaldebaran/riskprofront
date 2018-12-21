@@ -77,20 +77,7 @@ class LoginPage extends React.Component {
                   </div>
                 </CardHeader>
                 <CardBody>
-                  <CustomInput
-                    labelText="First Name.."
-                    id="firstname"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <Face className={classes.inputAdornmentIcon} />
-                        </InputAdornment>
-                      )
-                    }}
-                  />
+                  
                   <CustomInput
                     labelText="Email..."
                     id="email"

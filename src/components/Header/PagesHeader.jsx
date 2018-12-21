@@ -58,7 +58,7 @@ class PagesHeader extends React.Component {
               <Dashboard />
             </ListItemIcon>
             <ListItemText
-              primary={"Dashboard"}
+              primary={"About"}
               disableTypography={true}
               className={classes.listItemText}
             />
@@ -96,7 +96,7 @@ class PagesHeader extends React.Component {
           <Hidden smDown>
             <div className={classes.flex}>
               <Button href="#" className={classes.title} color="transparent">
-                Material Dashboard Pro React
+                Tek-Suite
               </Button>
             </div>
           </Hidden>

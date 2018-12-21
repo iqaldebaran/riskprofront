@@ -65,9 +65,9 @@ class HeaderLinks extends React.Component {
             className: classes.top + " " + classes.search
           }}
           inputProps={{
-            placeholder: rtlActive ? "بحث" : "Search",
+            placeholder:  "Search",
             inputProps: {
-              "aria-label": rtlActive ? "بحث" : "Search",
+              "aria-label": "Search",
               className: classes.searchInput
             }
           }}
@@ -104,7 +104,7 @@ class HeaderLinks extends React.Component {
           />
           <Hidden mdUp implementation="css">
             <span className={classes.linkText}>
-              {rtlActive ? "لوحة القيادة" : "Dashboard"}
+              {"Dashboard"}
             </span>
           </Hidden>
         </Button>

@@ -41,7 +41,7 @@ class PricingPage extends React.Component {
                 <h6 className={classes.cardCategory}>Freelancer</h6>
                 <div className={classes.icon}>
                 
-                  <Icon className={classes.iconWhite}>weekend</Icon>
+                  <Icon className={classes.iconWhite}>add_circle</Icon>
                 </div>
                 <h3
                   className={`${classes.cardTitleWhite} ${classes.marginTop30}`}

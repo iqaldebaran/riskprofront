@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+//Axios
+//import axios from 'axios'
+
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
 import Timeline from "@material-ui/icons/Timeline";
@@ -14,6 +16,8 @@ import Code from "@material-ui/icons/Code";
 import Group from "@material-ui/icons/Group";
 import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
+import PasswordIcon from "@material-ui/icons/Fingerprint";
+
 // import LockOutline from "@material-ui/icons/LockOutline";
 import Check from "@material-ui/icons/Check";
 
@@ -26,13 +30,18 @@ import InfoArea from "../../InfoArea/InfoArea.jsx";
 import Card from "../../Card/Card.jsx";
 import CardBody from "../../Card/CardBody.jsx";
 
-import registerPageStyle from "../../assets/jss/material-dashboard-pro-react/views/registerPageStyle";
+import registerPageStyle from "../../../assets/jss/material-dashboard-pro-react/views/registerPageStyle";
 
 class RegisterPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: []
+      checked: [],
+      user:{
+        email:"",
+        password:"",
+        confirmpassword: ""
+      }
     };
     this.handleToggle = this.handleToggle.bind(this);
   }
@@ -63,20 +72,20 @@ class RegisterPage extends React.Component {
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={12} md={5}>
                     <InfoArea
-                      title="Marketing"
-                      description="We've created the marketing campaign of the website. It was a very interesting collaboration."
+                      title="Risk Simulations Models"
+                      description="Models: Pool Fire, Fire Ball, Jet Fire, Toxic Release... and more"
                       icon={Timeline}
                       iconColor="rose"
                     />
                     <InfoArea
-                      title="Fully Coded in HTML5"
-                      description="We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub."
+                      title="Qualitative Risk Methods"
+                      description="Methods: HAZOP, Layer of Protection Analisys"
                       icon={Code}
                       iconColor="primary"
                     />
                     <InfoArea
-                      title="Built Audience"
-                      description="There is also a Fully Customizable CMS Admin Dashboard for this product."
+                      title="Environmental Impact Assessment"
+                      description="Methods: Leopold Matrix, RIAM, Batelle Columbus"
                       icon={Group}
                       iconColor="info"
                     />
@@ -95,7 +104,6 @@ class RegisterPage extends React.Component {
                         <i className="fab fa-facebook-f" />
                       </Button>
                       {` `}
-                      <h4 className={classes.socialTitle}>or be classical</h4>
                     </div>
                     <form className={classes.form}>
                       <CustomInput
@@ -143,12 +151,32 @@ class RegisterPage extends React.Component {
                               position="start"
                               className={classes.inputAdornment}
                             >
-                              <Icon className={classes.inputAdornmentIcon}>
-                                lock_outline
-                              </Icon>
+                              <PasswordIcon className={classes.inputAdornmentIcon}>
+                            lock_outline
+                          </PasswordIcon>
                             </InputAdornment>
                           ),
                           placeholder: "Password..."
+                        }}
+                      />
+
+                      <CustomInput
+                        formControlProps={{
+                          fullWidth: true,
+                          className: classes.customFormControlClasses
+                        }}
+                        inputProps={{
+                          startAdornment: (
+                            <InputAdornment
+                              position="start"
+                              className={classes.inputAdornment}
+                            >
+                              <PasswordIcon className={classes.inputAdornmentIcon}>
+                            lock_outline
+                          </PasswordIcon>
+                            </InputAdornment>
+                          ),
+                          placeholder: "Confirm Password..."
                         }}
                       />
                       <FormControlLabel

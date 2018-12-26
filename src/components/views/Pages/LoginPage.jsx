@@ -4,10 +4,9 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
-import Face from "@material-ui/icons/Face";
+import PasswordIcon from "@material-ui/icons/Fingerprint";
 import Email from "@material-ui/icons/Email";
 // import LockOutline from "@material-ui/icons/LockOutline";
 
@@ -21,20 +20,27 @@ import CardBody from "../../Card/CardBody.jsx";
 import CardHeader from "../../Card/CardHeader.jsx";
 import CardFooter from "../../Card/CardFooter.jsx";
 
-import loginPageStyle from "../../assets/jss/material-dashboard-pro-react/views/loginPageStyle.jsx";
+import loginPageStyle from "../../../assets/jss/material-dashboard-pro-react/views/loginPageStyle.jsx";
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
+      
     };
   }
+
+  //Pasar al proximo path - la pagina del proyecto principal
+  nextPath(path) {
+    this.props.history.push(path)
+  }
+
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     this.timeOutFunction = setTimeout(
-      function() {
+      function () {
         this.setState({ cardAnimaton: "" });
       }.bind(this),
       700
@@ -57,27 +63,10 @@ class LoginPage extends React.Component {
                   color="rose"
                 >
                   <h4 className={classes.cardTitle}>Log in</h4>
-                  <div className={classes.socialLine}>
-                    {[
-                      "fab fa-facebook-square",
-                      "fab fa-twitter",
-                      "fab fa-google-plus"
-                    ].map((prop, key) => {
-                      return (
-                        <Button
-                          color="transparent"
-                          justIcon
-                          key={key}
-                          className={classes.customButtonClass}
-                        >
-                          <i className={prop} />
-                        </Button>
-                      );
-                    })}
-                  </div>
+
                 </CardHeader>
                 <CardBody>
-                  
+
                   <CustomInput
                     labelText="Email..."
                     id="email"
@@ -101,17 +90,17 @@ class LoginPage extends React.Component {
                     inputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
-                          <Icon className={classes.inputAdornmentIcon}>
+                          <PasswordIcon className={classes.inputAdornmentIcon}>
                             lock_outline
-                          </Icon>
+                          </PasswordIcon>
                         </InputAdornment>
                       )
                     }}
                   />
                 </CardBody>
                 <CardFooter className={classes.justifyContentCenter}>
-                  <Button color="rose" simple size="lg" block>
-                    Let's Go
+                  <Button color="info" size="lg" block onClick={() => this.nextPath('/dashboard')}>
+                    Ok
                   </Button>
                 </CardFooter>
               </Card>

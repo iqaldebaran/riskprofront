@@ -15,7 +15,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
 // @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
 import Menu from "@material-ui/icons/Menu";
 
 // core components
@@ -23,7 +22,7 @@ import Button from "../CustomButtons/Button";
 
 import pagesRoutes from "../../routes/pages";
 
-import pagesHeaderStyle from "../assets/jss/material-dashboard-pro-react/components/pagesHeaderStyle.jsx";
+import pagesHeaderStyle from "../../assets/jss/material-dashboard-pro-react/components/pagesHeaderStyle.jsx";
 
 class PagesHeader extends React.Component {
   constructor(props) {
@@ -52,18 +51,7 @@ class PagesHeader extends React.Component {
     });
     var list = (
       <List className={classes.list}>
-        <ListItem className={classes.listItem}>
-          <NavLink to={"/dashboard"} className={classes.navLink}>
-            <ListItemIcon className={classes.listItemIcon}>
-              <Dashboard />
-            </ListItemIcon>
-            <ListItemText
-              primary={"About"}
-              disableTypography={true}
-              className={classes.listItemText}
-            />
-          </NavLink>
-        </ListItem>
+        
         {pagesRoutes.map((prop, key) => {
           if (prop.redirect) {
             return null;

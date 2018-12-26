@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
 // import Weekend from "@material-ui/icons/Weekend";
 import Home from "@material-ui/icons/Home";
 import Business from "@material-ui/icons/Business";
 import AccountBalance from "@material-ui/icons/AccountBalance";
+import AccountBox from "@material-ui/icons/AccountBox";
+
 
 // core components
 import GridContainer from "../../Grid/GridContainer.jsx";
@@ -18,8 +19,7 @@ import Button from "../../CustomButtons/Button.jsx";
 import Card from "../../Card/Card";
 import CardBody from "../../Card/CardBody.jsx";
 
-import pricingPageStyle from "../../assets/jss/material-dashboard-pro-react/views/pricingPageStyle.jsx";
-//TODO: Ver el icono Free que falta weekend linea44
+import pricingPageStyle from "../../../assets/jss/material-dashboard-pro-react/views/pricingPageStyle.jsx";
 class PricingPage extends React.Component {
   render() {
     const { classes } = this.props;
@@ -38,10 +38,10 @@ class PricingPage extends React.Component {
           <GridItem xs={12} sm={12} md={3}>
             <Card pricing plain>
               <CardBody pricing plain>
-                <h6 className={classes.cardCategory}>Freelancer</h6>
+                <h6 className={classes.cardCategory}>Free</h6>
                 <div className={classes.icon}>
                 
-                  <Icon className={classes.iconWhite}>add_circle</Icon>
+                <AccountBox className={classes.iconWhite} />
                 </div>
                 <h3
                   className={`${classes.cardTitleWhite} ${classes.marginTop30}`}
@@ -49,7 +49,7 @@ class PricingPage extends React.Component {
                   FREE
                 </h3>
                 <p className={classes.cardCategory}>
-                  This is good if your company size is between 2 and 10 Persons.
+                  Limited functions and methods.
                 </p>
                 <Button round color="white">
                   Choose plan
@@ -60,7 +60,7 @@ class PricingPage extends React.Component {
           <GridItem xs={12} sm={12} md={3}>
             <Card pricing raised>
               <CardBody pricing>
-                <h6 className={classes.cardCategory}>SMALL COMPANY</h6>
+                <h6 className={classes.cardCategory}>BASIC</h6>
                 <div className={classes.icon}>
                   <Home className={classes.iconRose} />
                 </div>
@@ -68,7 +68,7 @@ class PricingPage extends React.Component {
                   $29
                 </h3>
                 <p className={classes.cardDescription}>
-                  This is good if your company size is between 2 and 10 Persons.
+                  This is good if your need some methods.
                 </p>
                 <Button round color="rose">
                   Choose plan
@@ -79,7 +79,7 @@ class PricingPage extends React.Component {
           <GridItem xs={12} sm={12} md={3}>
             <Card pricing plain>
               <CardBody pricing plain>
-                <h6 className={classes.cardCategory}>MEDIUM COMPANY</h6>
+                <h6 className={classes.cardCategory}>PROFESSIONAL</h6>
                 <div className={classes.icon}>
                   <Business className={classes.iconWhite} />
                 </div>
@@ -89,8 +89,7 @@ class PricingPage extends React.Component {
                   $69
                 </h3>
                 <p className={classes.cardCategory}>
-                  This is good if your company size is between 11 and 99
-                  Persons.
+                  This is good for HSE mangers or freelance consultants.
                 </p>
                 <Button round color="white">
                   Choose plan
@@ -111,7 +110,8 @@ class PricingPage extends React.Component {
                   $159
                 </h3>
                 <p className={classes.cardCategory}>
-                  This is good if your company size is 99+ persons.
+                  This is good for consulting or corporate firms
+.
                 </p>
                 <Button round color="white">
                   Choose plan

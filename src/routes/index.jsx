@@ -4,7 +4,7 @@ import Pages from "../components/layouts/Pages.jsx";
 
 var indexRoutes = [
   // { path: "/rtl", name: "RTL", component: RTL },
-  { path: "/pages", name: "Pages", component: Pages },
+  { path: "/", name: "Pages", component: Pages },
   // { path: "/", name: "Home", component: Dashboard }
 ];
 

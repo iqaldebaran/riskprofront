@@ -1,5 +1,9 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../../../actions/authActions";
+import classnames from "classnames";
 
 //Axios
 //import axios from 'axios'
@@ -9,6 +13,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormHelperText from '@material-ui/core/FormHelperText';
+
 
 // @material-ui/icons
 import Timeline from "@material-ui/icons/Timeline";
@@ -37,14 +43,48 @@ class RegisterPage extends React.Component {
     super(props);
     this.state = {
       checked: [],
-      user:{
-        email:"",
-        password:"",
-        confirmpassword: ""
-      }
+      name: "",
+      email: "",
+      password: "",
+      password2: "",
+      errors: {}
     };
     this.handleToggle = this.handleToggle.bind(this);
   }
+
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
+  onChange = e => {
+    console.log('aqui ando:', e.target.id)
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const newUser = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
+    };
+
+    this.props.registerUser(newUser, this.props.history);
+  };
+
+
   handleToggle(value) {
     const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
@@ -61,6 +101,8 @@ class RegisterPage extends React.Component {
     });
   }
   render() {
+    const { errors } = this.state;
+
     const { classes } = this.props;
     return (
       <div className={classes.container}>
@@ -105,13 +147,22 @@ class RegisterPage extends React.Component {
                       </Button>
                       {` `}
                     </div>
-                    <form className={classes.form}>
+                    {/*---------- FORM ------- */}
+                    <form className={classes.form} noValidate onSubmit={this.onSubmit}>
                       <CustomInput
+                        id="name"
+                        type="text"
+                        className={classnames("", {
+                          invalid: errors.name
+                        })}
                         formControlProps={{
                           fullWidth: true,
-                          className: classes.customFormControlClasses
+                          className: classes.customFormControlClasses,
                         }}
                         inputProps={{
+                          onChange: this.onChange,
+                          value: this.state.name,
+                          error: (errors.name ? true : false),
                           startAdornment: (
                             <InputAdornment
                               position="start"
@@ -120,15 +171,24 @@ class RegisterPage extends React.Component {
                               <Face className={classes.inputAdornmentIcon} />
                             </InputAdornment>
                           ),
-                          placeholder: "First Name..."
+                          placeholder: "User Name...",
                         }}
                       />
+                      <span>{errors.name}</span>
                       <CustomInput
+                        id="email"
+                        type="email"
+                        // className={classnames("", {
+                        //   invalid: errors.email
+                        // })}
                         formControlProps={{
                           fullWidth: true,
                           className: classes.customFormControlClasses
                         }}
                         inputProps={{
+                          onChange: this.onChange,
+                          value: this.state.email,
+                          error: (errors.email ? true : false),
                           startAdornment: (
                             <InputAdornment
                               position="start"
@@ -140,45 +200,66 @@ class RegisterPage extends React.Component {
                           placeholder: "Email..."
                         }}
                       />
+                      <span>{errors.email}</span>
+
                       <CustomInput
+                        id="password"
+                        type="password"
+                        // className={classnames("", {
+                        //   invalid: errors.password
+                        // })}
                         formControlProps={{
                           fullWidth: true,
                           className: classes.customFormControlClasses
                         }}
                         inputProps={{
+                          onChange: this.onChange,
+                          value: this.state.password,
+                          error: (errors.password ? true : false),
                           startAdornment: (
                             <InputAdornment
                               position="start"
                               className={classes.inputAdornment}
                             >
                               <PasswordIcon className={classes.inputAdornmentIcon}>
-                            lock_outline
+                                lock_outline
                           </PasswordIcon>
                             </InputAdornment>
                           ),
                           placeholder: "Password..."
                         }}
                       />
+                          <span>{errors.password}</span>
 
                       <CustomInput
+                        id="password2"
+                        type="password"
+                        // className={classnames("", {
+                        //   invalid: errors.password2
+                        // })}
                         formControlProps={{
                           fullWidth: true,
                           className: classes.customFormControlClasses
                         }}
                         inputProps={{
+                          onChange: this.onChange,
+                          value: this.state.password2,
+                          error: (errors.password2 ? true : false),
                           startAdornment: (
                             <InputAdornment
                               position="start"
                               className={classes.inputAdornment}
                             >
                               <PasswordIcon className={classes.inputAdornmentIcon}>
-                            lock_outline
+                                lock_outline
                           </PasswordIcon>
                             </InputAdornment>
                           ),
                           placeholder: "Confirm Password..."
                         }}
                       />
+                      <span>{errors.password2}</span>
+
                       <FormControlLabel
                         classes={{
                           root: classes.checkboxLabelControl,
@@ -206,11 +287,12 @@ class RegisterPage extends React.Component {
                         }
                       />
                       <div className={classes.center}>
-                        <Button round color="primary">
+                        <Button round color="primary" type="submit">
                           Get started
                         </Button>
                       </div>
                     </form>
+
                   </GridItem>
                 </GridContainer>
               </CardBody>
@@ -223,7 +305,17 @@ class RegisterPage extends React.Component {
 }
 
 RegisterPage.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(registerPageStyle)(RegisterPage);
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+// export default withStyles(registerPageStyle)(RegisterPage);
+
+export default withStyles(registerPageStyle)(connect(mapStateToProps, { registerUser })(withRouter(RegisterPage)));

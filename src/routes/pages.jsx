@@ -11,7 +11,7 @@ import MonetizationOn from "@material-ui/icons/MonetizationOn";
 
 const pagesRoutes = [
   {
-    path: "/pages/register-page",
+    path: "/api/users/register",
     name: "Register Page",
     short: "Register",
     mini: "RP",
@@ -45,7 +45,7 @@ const pagesRoutes = [
   {
     redirect: true,
     path: "/pages",
-    pathTo: "/pages/register-page",
+    pathTo: "/api/users/register",
     name: "Register Page"
   }
 ];

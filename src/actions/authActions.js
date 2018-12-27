@@ -11,8 +11,9 @@ import {
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
+  console.log("Userdata:", userData)
   axios
-    .post("/api/users/register", userData)
+    .post("http://localhost:3000/api/users/register", userData)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({

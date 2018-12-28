@@ -14,7 +14,7 @@ export const registerUser = (userData, history) => dispatch => {
   console.log("Userdata:", userData)
   axios
     .post("http://localhost:3000/api/users/register", userData)
-    .then(res => history.push("/login"))
+    .then(res => history.push("/pages/login"))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -26,7 +26,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("/api/users/login", userData)
+    .post("http://localhost:3000/api/users/login", userData)
     .then(res => {
       // Save to localStorage
 

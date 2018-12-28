@@ -1,4 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginUser } from "../../../actions/authActions";
+import classnames from "classnames";
 import PropTypes from "prop-types";
 
 // @material-ui/core components
@@ -28,14 +32,47 @@ class LoginPage extends React.Component {
     // we use this to make the card to appear after the page has been rendered
     this.state = {
       cardAnimaton: "cardHidden",
-      
+      email: "",
+      password: "",
+      errors: {}
     };
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
   }
 
   //Pasar al proximo path - la pagina del proyecto principal
   nextPath(path) {
     this.props.history.push(path)
   }
+
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    this.props.loginUser(userData);
+  };
 
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
@@ -52,11 +89,13 @@ class LoginPage extends React.Component {
   }
   render() {
     const { classes } = this.props;
+    const { errors } = this.state;
+
     return (
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={6} md={4}>
-            <form>
+            <form noValidate onSubmit={this.onSubmit}>
               <Card login className={classes[this.state.cardAnimaton]}>
                 <CardHeader
                   className={`${classes.cardHeader} ${classes.textCenter}`}
@@ -74,6 +113,9 @@ class LoginPage extends React.Component {
                       fullWidth: true
                     }}
                     inputProps={{
+                      onChange: this.onChange,
+                      value: this.state.email,
+                      error: (errors.email ? true : false),
                       endAdornment: (
                         <InputAdornment position="end">
                           <Email className={classes.inputAdornmentIcon} />
@@ -81,6 +123,11 @@ class LoginPage extends React.Component {
                       )
                     }}
                   />
+                  <span className="red-text">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span>
+
                   <CustomInput
                     labelText="Password"
                     id="password"
@@ -88,6 +135,9 @@ class LoginPage extends React.Component {
                       fullWidth: true
                     }}
                     inputProps={{
+                      onChange: this.onChange,
+                      value: this.state.password,
+                      error: (errors.password ? true : false),
                       endAdornment: (
                         <InputAdornment position="end">
                           <PasswordIcon className={classes.inputAdornmentIcon}>
@@ -97,9 +147,14 @@ class LoginPage extends React.Component {
                       )
                     }}
                   />
+                  <span className="red-text">
+                  {errors.password}
+                  {errors.passwordincorrect}
+                  </span>
+
                 </CardBody>
                 <CardFooter className={classes.justifyContentCenter}>
-                  <Button color="info" size="lg" block onClick={() => this.nextPath('/dashboard')}>
+                  <Button color="primary" size="lg" block type="submit">
                     Ok
                   </Button>
                 </CardFooter>
@@ -113,7 +168,15 @@ class LoginPage extends React.Component {
 }
 
 LoginPage.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
-export default withStyles(loginPageStyle)(LoginPage);
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default withStyles(loginPageStyle)(connect(mapStateToProps,{ loginUser })(LoginPage));

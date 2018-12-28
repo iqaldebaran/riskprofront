@@ -4,6 +4,10 @@ import PropTypes from "prop-types";
 import PerfectScrollbar from "perfect-scrollbar";
 import { NavLink } from "react-router-dom";
 import cx from "classnames";
+import { connect } from "react-redux";
+
+import { logoutUser } from "../../actions/authActions";
+
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -15,6 +19,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Hidden from "@material-ui/core/Hidden";
 import Collapse from "@material-ui/core/Collapse";
 import Icon from "@material-ui/core/Icon";
+import Button from '@material-ui/core/Button';
+
 
 // core components
 import HeaderLinks from "../../components/Header/HeaderLinks.jsx";
@@ -30,6 +36,13 @@ var ps;
 // There might be something with the Hidden component from material-ui, and we didn't have access to
 // the links, and couldn't initialize the plugin.
 class SidebarWrapper extends React.Component {
+
+  onLogoutClick = e => {
+    console.log("pico el boton logout")
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.refs.sidebarWrapper, {
@@ -216,10 +229,19 @@ class Sidebar extends React.Component {
                     />
                   </NavLink>
                 </ListItem>
+
               </List>
+
             </Collapse>
           </ListItem>
         </List>
+        <Button onClick={(e) => {
+          console.log("pico el boton logout")
+          e.preventDefault();
+          this.props.logoutUser();
+        }}>
+          Logout
+        </Button>
       </div>
     );
     var links = (
@@ -278,8 +300,8 @@ class Sidebar extends React.Component {
                     {typeof prop.icon === "string" ? (
                       <Icon>{prop.icon}</Icon>
                     ) : (
-                      <prop.icon />
-                    )}
+                        <prop.icon />
+                      )}
                   </ListItemIcon>
                   <ListItemText
                     primary={prop.name}
@@ -363,8 +385,8 @@ class Sidebar extends React.Component {
                   {typeof prop.icon === "string" ? (
                     <Icon>{prop.icon}</Icon>
                   ) : (
-                    <prop.icon />
-                  )}
+                      <prop.icon />
+                    )}
                 </ListItemIcon>
                 <ListItemText
                   primary={prop.name}
@@ -507,7 +529,13 @@ Sidebar.propTypes = {
   logo: PropTypes.string,
   logoText: PropTypes.string,
   image: PropTypes.string,
-  routes: PropTypes.arrayOf(PropTypes.object)
+  routes: PropTypes.arrayOf(PropTypes.object),
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
-export default withStyles(sidebarStyle)(Sidebar);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default withStyles(sidebarStyle)(connect(mapStateToProps, { logoutUser })(Sidebar));

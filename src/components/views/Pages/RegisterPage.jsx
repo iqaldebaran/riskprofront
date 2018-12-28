@@ -13,7 +13,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from '@material-ui/core/FormHelperText';
 
 
 // @material-ui/icons
@@ -68,7 +67,6 @@ class RegisterPage extends React.Component {
   }
 
   onChange = e => {
-    console.log('aqui ando:', e.target.id)
     this.setState({ [e.target.id]: e.target.value });
   };
 

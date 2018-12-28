@@ -13,8 +13,10 @@ import store from "./store";
 
 
 import indexRoutes from "./routes/index";
-import Dashboard from './components/layouts/Dashboard';
+import Dashboard from './components/layouts/Dashboard.jsx';
 import Pages from './components/layouts/Pages';
+import PrivateRoute from './components/private-route/PrivateRoute';
+import LoginPage from './components/views/Pages/LoginPage';
 const hist = createBrowserHistory();
 
 // Check for token to keep user logged in
@@ -45,12 +47,17 @@ class App extends Component {
       <Router history={hist}>
         <Switch>
           {indexRoutes.map((prop, key) => {
+                      {console.log("index routes: ",prop.component)}
             return <Route path={prop.path} component={prop.component} key={key} />;
           })}
-          <Route exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          
+          {/* AQUI PONEMOS LA PAGINA PRINCIPAL */}
           <Route exact path="/" component={Pages} />
 
+
         </Switch>
+
       </Router>
       </Provider>
 

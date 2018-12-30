@@ -4,7 +4,7 @@ import {
   dangerColor,
   tooltip
 } from "../../material-dashboard-pro-react.jsx";
-import customCheckboxRadioSwitch from "assets/jss/material-dashboard-pro-react/customCheckboxRadioSwitch.jsx";
+import customCheckboxRadioSwitch from "../../../../assets/jss/material-dashboard-pro-react/customCheckboxRadioSwitch.jsx";
 
 const tasksStyle = {
   ...customCheckboxRadioSwitch,

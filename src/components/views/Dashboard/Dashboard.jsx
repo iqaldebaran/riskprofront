@@ -69,8 +69,9 @@ class Dashboard extends React.Component {
         <GridContainer>
           <GridItem xs={12} sm={12} md={4}>
             <Card product className={classes.cardHover}>
-              <CardHeader image className={classes.cardHeaderHover}>
-                <a href="/" >
+              <CardHeader image>
+              {/* className={classes.cardHeaderHover} - DENTRO DE LA CARDHEADER DE ARRIBA */}
+                <a href="/dashboard/a" >
                   <img src={priceImage1} alt="..." />
                 </a>
               </CardHeader>

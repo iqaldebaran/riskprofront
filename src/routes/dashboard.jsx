@@ -18,7 +18,7 @@
 // import VectorMap from "views/Maps/VectorMap.jsx";
 // import Charts from "views/Charts/Charts.jsx";
 // import Calendar from "../components/views/Calendar/Calendar.jsx";
-// import Widgets from "views/Widgets/Widgets.jsx";
+import Widgets from "../components/views/Widgets/Widgets";
 // import UserProfile from "views/Pages/UserProfile.jsx";
 // import TimelinePage from "views/Pages/Timeline.jsx";
 
@@ -31,7 +31,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 // import ContentPaste from "@material-ui/icons/ContentPaste";
 // import GridOn from "@material-ui/icons/GridOn";
 // import Place from "@material-ui/icons/Place";
-// import WidgetsIcon from "@material-ui/icons/Widgets";
+import WidgetsIcon from "@material-ui/icons/Widgets";
 // import Timeline from "@material-ui/icons/Timeline";
 // import DateRange from "@material-ui/icons/DateRange";
 
@@ -195,9 +195,9 @@ var dashRoutes = [
   //     }
   //   ]
   // },
-  // { path: "/widgets", name: "Widgets", icon: WidgetsIcon, component: Widgets },
+  { path: "/widgets", name: "Widgets", icon: WidgetsIcon, component: Widgets },
   // { path: "/charts", name: "Charts", icon: Timeline, component: Charts },
   // { path: "/calendar", name: "Calendar", icon: DateRange, component: Calendar },
-  { redirect: true, path: "/dashboard", pathTo: "/dashboard", name: "Dashboard" }
+  { redirect: true, path: "/", pathTo: "/dashboard", name: "Dashboard" }
 ];
 export default dashRoutes;

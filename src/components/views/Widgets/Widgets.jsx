@@ -10,28 +10,28 @@ import Code from "@material-ui/icons/Code";
 import Cloud from "@material-ui/icons/Cloud";
 import FormatQuote from "@material-ui/icons/FormatQuote";
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Table from "components/Table/Table.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import Timeline from "components/Timeline/Timeline.jsx";
-import CustomTabs from "components/CustomTabs/CustomTabs.jsx";
-import Tasks from "components/Tasks/Tasks.jsx";
-import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardAvatar from "components/Card/CardAvatar.jsx";
-import CardText from "components/Card/CardText.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
+import GridContainer from "../../../components/Grid/GridContainer.jsx";
+import GridItem from "../../../components/Grid/GridItem.jsx";
+import Table from "../../../components/Table/Table.jsx";
+import Button from "../../../components/CustomButtons/Button.jsx";
+import Timeline from "../../../components/Timeline/Timeline.jsx";
+import CustomTabs from "../../../components/CustomTabs/CustomTabs.jsx";
+import Tasks from "../../../components/Tasks/Tasks.jsx";
+import Card from "../../../components/Card/Card.jsx";
+import CardHeader from "../../../components/Card/CardHeader.jsx";
+import CardAvatar from "../../../components/Card/CardAvatar.jsx";
+import CardText from "../../../components/Card/CardText.jsx";
+import CardBody from "../../../components/Card/CardBody.jsx";
+import CardFooter from "../../../components/Card/CardFooter.jsx";
 
-import { widgetStories, bugs, website, server } from "variables/general.jsx";
+import { widgetStories, bugs, website, server } from "../../../variables/general.jsx";
 
-import image from "assets/img/faces/card-profile1-square.jpg";
+import image from "../../../assets/img/faces/card-profile1-square.jpg";
 
 import {
   cardTitle,
   roseColor
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../assets/jss/material-dashboard-pro-react.jsx";
 
 const styles = {
   cardTitle,
@@ -95,7 +95,7 @@ class Widgets extends React.Component {
             <Card>
               <CardHeader color="warning" text>
                 <CardText color="warning">
-                  <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
+                  <h4 className={classes.cardTitleWhite}>EmployeeshhStats</h4>
                   <h4 className={classes.cardCategoryWhite}>
                     New employees on 15th September, 2016
                   </h4>

@@ -22,6 +22,7 @@ import Icon from "@material-ui/core/Icon";
 import Button from '@material-ui/core/Button';
 
 
+
 // core components
 import HeaderLinks from "../../components/Header/HeaderLinks.jsx";
 
@@ -229,19 +230,20 @@ class Sidebar extends React.Component {
                     />
                   </NavLink>
                 </ListItem>
-
+<div>
+                  <Button variant="contained" color="secondary" className={classes.button} onClick={(e) => {
+                    console.log("pico el boton logout")
+                    e.preventDefault();
+                    this.props.logoutUser();
+                  }}>
+                    Logout
+        </Button>
+        </div>
               </List>
 
             </Collapse>
           </ListItem>
         </List>
-        <Button onClick={(e) => {
-          console.log("pico el boton logout")
-          e.preventDefault();
-          this.props.logoutUser();
-        }}>
-          Logout
-        </Button>
       </div>
     );
     var links = (

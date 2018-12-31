@@ -19,6 +19,7 @@
 // import Charts from "views/Charts/Charts.jsx";
 // import Calendar from "../components/views/Calendar/Calendar.jsx";
 import Widgets from "../components/views/Widgets/Widgets";
+import ImpactLeopold from "../components/views/ImpactLeopold/AspectosAmbientales"
 // import UserProfile from "views/Pages/UserProfile.jsx";
 // import TimelinePage from "views/Pages/Timeline.jsx";
 
@@ -32,6 +33,8 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 // import GridOn from "@material-ui/icons/GridOn";
 // import Place from "@material-ui/icons/Place";
 import WidgetsIcon from "@material-ui/icons/Widgets";
+import ImpactLeopoldIcon from "@material-ui/icons/Tune";
+
 // import Timeline from "@material-ui/icons/Timeline";
 // import DateRange from "@material-ui/icons/DateRange";
 
@@ -53,7 +56,7 @@ import WidgetsIcon from "@material-ui/icons/Widgets";
 var dashRoutes = [
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "Home",
     icon: DashboardIcon,
     component: Dashboard
   },
@@ -195,7 +198,9 @@ var dashRoutes = [
   //     }
   //   ]
   // },
-  { path: "/widgets", name: "Widgets", icon: WidgetsIcon, component: Widgets },
+ // { path: "/widgets", name: "Widgets", icon: WidgetsIcon, component: Widgets },
+  { path: "/impactleopold", name: "Impact Assesment Leopold", icon: ImpactLeopoldIcon, component: ImpactLeopold },
+
   // { path: "/charts", name: "Charts", icon: Timeline, component: Charts },
   // { path: "/calendar", name: "Calendar", icon: DateRange, component: Calendar },
   { redirect: true, path: "/", pathTo: "/dashboard", name: "Dashboard" }

@@ -64,13 +64,13 @@ class RegularForms extends React.Component {
     const { classes } = this.props;
     return (
       <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
+        <GridItem xs={12} sm={12} md={12}>
           <Card>
             <CardHeader color="rose" icon>
               <CardIcon color="rose">
                 <MailOutline />
               </CardIcon>
-              <h4 className={classes.cardIconTitle}>Stacked Form</h4>
+              <h4 className={classes.cardIconTitle}>sdaasrm</h4>
             </CardHeader>
             <CardBody>
               <form>

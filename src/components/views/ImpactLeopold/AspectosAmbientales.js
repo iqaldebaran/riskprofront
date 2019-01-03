@@ -82,6 +82,8 @@ sumatotal=(a,b)=>{
      console.log("index",data)
 
     let datos = data.splice(index,1)
+    console.log("data splice",data)
+
     this.setState(datos)
   }
 

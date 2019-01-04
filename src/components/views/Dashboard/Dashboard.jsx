@@ -128,8 +128,8 @@ class Dashboard extends React.Component {
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <Card product className={classes.cardHover}>
-              <CardHeader image className={classes.cardHeaderHover}>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
+              <CardHeader image>
+                <a href="/impactleopold">
                   <img src={priceImage2} alt="..." />
                 </a>
               </CardHeader>

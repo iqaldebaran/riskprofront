@@ -1,0 +1,7 @@
+.Table-React{
+  color: brown !important
+}
+
+.ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
+  background-color: rgba(247, 247, 247, 1) !important;
+}

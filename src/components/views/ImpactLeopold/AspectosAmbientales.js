@@ -8,12 +8,21 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import Card from "../../../components/Card/Card.jsx";
+import CardBody from "../../../components/Card/CardBody.jsx";
+
+
+
 import Typography from '@material-ui/core/Typography';
+import GridItem from "../../../components/Grid/GridItem.jsx";
+import GridContainer from "../../../components/Grid/GridContainer.jsx";
+
 
 import Slider from '@material-ui/lab/Slider';
 import ReactTable from "react-table";
 import "react-table/react-table.css"
 import Forms from './RegularForms'
+import "../../../css/projectStyle.css"
 
 
 
@@ -78,20 +87,27 @@ sumatotal=(a,b)=>{
   }
 
   DeleteButton=(index)=>{
-     let{data}=this.state
-     console.log("index",data)
 
-    let datos = data.splice(index,1)
-    console.log("data splice",data)
+    this.setState({
+    data: this.state.data.filter((_, i) => i !== index)
+  });
 
-    this.setState(datos)
+    //  let{data}=this.state
+    //  console.log("index",data)
+
+    // let datos = data.splice(index,1)
+    // console.log("data splice",data)
+
+    // this.setState({
+    //   data:data.splice(index,1)
+    // })
   }
 
  ClickButton =(e)=>{
 
   let{data}=this.state
    let x = this.state.numeroA+this.state.numeroB;
-   let arr = {name:"Remocion de tierra", factor:"vegetacion"}
+   let arr = {name:"Remocion de tierra", factor:"vegetacion", magnitud:10, importancia:8}
    data.push(arr)
    this.setState({suma:x})
    this.setState(data)
@@ -111,10 +127,25 @@ sumatotal=(a,b)=>{
         <TextField
         onChange={this.handleNumBChange}
         />
-        <Button onClick={this.ClickButton}>Add </Button>
+        <Button color="rose" onClick={this.ClickButton}>Add </Button>
         <Typography>{suma}</Typography>
+        <Forms/>
         </Paper>
+        <Card>
+          <CardBody>
+        <GridItem
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                <Button variant="contained" color="secondary"  onClick={this.ClickButton}>Add</Button>
+                </GridItem>
+                </CardBody>
+                </Card>
+
         <ReactTable
+        className="ReactTable"
         data={data}
         columns= {[
           { Header: 'Environmental Aspect', accessor: 'name' },

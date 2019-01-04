@@ -18,7 +18,6 @@
 // import VectorMap from "views/Maps/VectorMap.jsx";
 // import Charts from "views/Charts/Charts.jsx";
 // import Calendar from "../components/views/Calendar/Calendar.jsx";
-import Widgets from "../components/views/Widgets/Widgets";
 import ImpactLeopold from "../components/views/ImpactLeopold/AspectosAmbientales"
 // import UserProfile from "views/Pages/UserProfile.jsx";
 // import TimelinePage from "views/Pages/Timeline.jsx";
@@ -32,7 +31,6 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 // import ContentPaste from "@material-ui/icons/ContentPaste";
 // import GridOn from "@material-ui/icons/GridOn";
 // import Place from "@material-ui/icons/Place";
-import WidgetsIcon from "@material-ui/icons/Widgets";
 import ImpactLeopoldIcon from "@material-ui/icons/Tune";
 
 // import Timeline from "@material-ui/icons/Timeline";

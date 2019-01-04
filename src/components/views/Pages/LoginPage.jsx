@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
-import classnames from "classnames";
 import PropTypes from "prop-types";
 
 // @material-ui/core components

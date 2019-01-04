@@ -119,7 +119,7 @@ sumatotal=(a,b)=>{
     let { row, suma, data, columns, magnitud} = this.state;
     return (
       <Paper>
-        <Paper>
+        {/* <Paper>
         <TextField
         onChange = {this.handleNumAChange}
         /> 
@@ -130,7 +130,9 @@ sumatotal=(a,b)=>{
         <Button color="rose" onClick={this.ClickButton}>Add </Button>
         <Typography>{suma}</Typography>
         <Forms/>
-        </Paper>
+        </Paper> */}
+                <Forms/>
+
         <Card>
           <CardBody>
         <GridItem

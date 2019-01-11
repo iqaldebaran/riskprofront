@@ -11,7 +11,6 @@ import {
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
-  //console.log("Userdata:", userData)
   axios
     .post("/api/users/register", userData)
     .then(res => history.push("/pages/login"))
@@ -25,6 +24,8 @@ export const registerUser = (userData, history) => dispatch => {
 
 // Login - get user token
 export const loginUser = userData => dispatch => {
+  console.log("Userdata:", userData)
+
   axios
     .post("/api/users/login", userData)
     .then(res => {
@@ -54,6 +55,7 @@ export const setCurrentUser = decoded => {
     type: SET_CURRENT_USER,
     payload: decoded
   };
+
 };
 
 // Get current user

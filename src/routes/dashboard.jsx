@@ -3,7 +3,7 @@
 // import GridSystem from "../components/views/Components/GridSystem.jsx";
 // import Panels from "../components/views/Components/Panels.jsx";
 // import SweetAlert from "../components/views/Components/SweetAlert.jsx";
-// import Notifications from "../components/views/Components/Notifications.jsx";
+// // import Notifications from "../components/views/Components/Notifications.jsx";
 // import Icons from "../components/views/Components/Icons.jsx";
 // import Typography from "../components/views/Components/Typography.jsx";
 // import RegularForms from "views/Forms/RegularForms.jsx";
@@ -19,18 +19,20 @@
 // import Charts from "views/Charts/Charts.jsx";
 // import Calendar from "../components/views/Calendar/Calendar.jsx";
 import ImpactLeopold from "../components/views/ImpactLeopold/AspectosAmbientales"
+import Hazop from "../components/views/Hazop/Hazop"
+
 // import UserProfile from "views/Pages/UserProfile.jsx";
 // import TimelinePage from "views/Pages/Timeline.jsx";
 
-// import pagesRoutes from "./pages.jsx";
+import pagesRoutes from "./pages.jsx";
 
 // @material-ui/icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
-// import Image from "@material-ui/icons/Image";
-// import Apps from "@material-ui/icons/Apps";
+import Image from "@material-ui/icons/Image";
+import Apps from "@material-ui/icons/Apps";
 // import ContentPaste from "@material-ui/icons/ContentPaste";
-// import GridOn from "@material-ui/icons/GridOn";
-// import Place from "@material-ui/icons/Place";
+import GridOn from "@material-ui/icons/GridOn";
+import Place from "@material-ui/icons/Place";
 import ImpactLeopoldIcon from "@material-ui/icons/Tune";
 
 // import Timeline from "@material-ui/icons/Timeline";
@@ -68,80 +70,79 @@ var dashRoutes = [
   // },
 
 
-  // {
-  //   collapse: true,
-  //   path: "/project",
-  //   name: "Project",
-  //   state: "openComponents",
-  //   icon: Apps,
-  //   views: [
-  //     {
-  //       path: "/components/buttons",
-  //       name: "Buttons",
-  //       mini: "B",
-  //       component: Buttons
-  //     },
-  //     {
-  //       path: "/components/grid-system",
-  //       name: "Grid System",
-  //       mini: "GS",
-  //       component: GridSystem
-  //     },
-  //     {
-  //       path: "/components/panels",
-  //       name: "Panels",
-  //       mini: "P",
-  //       component: Panels
-  //     },
-  //     {
-  //       path: "/components/sweet-alert",
-  //       name: "Sweet Alert",
-  //       mini: "SA",
-  //       component: SweetAlert
-  //     },
-  //     {
-  //       path: "/components/notifications",
-  //       name: "Notifications",
-  //       mini: "N",
-  //       component: Notifications
-  //     },
-  //     { path: "/components/icons", name: "Icons", mini: "I", component: Icons },
-  //     {
-  //       path: "/components/typography",
-  //       name: "Typography",
-  //       mini: "T",
-  //       component: Typography
-  //     }
-  //   ]
-  // },
-  // {
-  //   collapse: true,
-  //   path: "/forms",
-  //   name: "Forms",
-  //   state: "openForms",
-  //   icon: "content_paste",
-  //   views: [
-  //     {
-  //       path: "/forms/regular-forms",
-  //       name: "Regular Forms",
-  //       mini: "RF",
-  //       component: RegularForms
-  //     },
-  //     {
-  //       path: "/forms/extended-forms",
-  //       name: "Extended Forms",
-  //       mini: "EF",
-  //       component: ExtendedForms
-  //     },
-  //     {
-  //       path: "/forms/validation-forms",
-  //       name: "Validation Forms",
-  //       mini: "VF",
-  //       component: ValidationForms
-  //     },
-  //     { path: "/forms/wizard", name: "Wizard", mini: "W", component: Wizard }
-  //   ]
-  // },
+  {
+    collapse: true,
+    path: "/qualitative",
+    name: "Qualitative Risk",
+    state: "openComponents",
+    icon: Apps,
+    views: [
+      {
+        path: "/Hazop",
+        name: "Hazop",
+        mini: "HZ",
+        component: Hazop
+      },
+      {
+        path: "/Lopa",
+        name: "LOPA",
+        mini: "LP",
+        component: Hazop
+      },
+      // {
+      //   path: "/components/panels",
+      //   name: "Panels",
+      //   mini: "P",
+      //   component: Panels
+      // },
+      // {
+      //   path: "/components/sweet-alert",
+      //   name: "Sweet Alert",
+      //   mini: "SA",
+      //   component: SweetAlert
+      // },
+      // {
+      //   path: "/components/notifications",
+      //   name: "Notifications",
+      //   mini: "N",
+      //   component: Notifications
+      // },
+      // { path: "/components/icons", name: "Icons", mini: "I", component: Icons },
+      // {
+      //   path: "/components/typography",
+      //   name: "Typography",
+      //   mini: "T",
+      //   component: Typography
+      // }
+    ]
+  },
+  {
+    collapse: true,
+    path: "/quantitative",
+    name: "Risk Simulations",
+    state: "openForms",
+    icon: Apps,
+    views: [
+      {
+        path: "/forms/regular-forms",
+        name: "Fireball",
+        mini: "FB",
+        component: Hazop
+      },
+      {
+        path: "/forms/extended-forms",
+        name: "VCE Explosion",
+        mini: "VC",
+        component: Hazop
+      },
+      {
+        path: "/forms/validation-forms",
+        name: "Pool Fire",
+        mini: "PF",
+        component: Hazop
+      },
+    ]
+  },
   // {
   //   collapse: true,
   //   path: "/tables",
@@ -197,7 +198,8 @@ var dashRoutes = [
   //   ]
   // },
  // { path: "/widgets", name: "Widgets", icon: WidgetsIcon, component: Widgets },
-  { path: "/impactleopold", name: "Impact Assesment Leopold", icon: ImpactLeopoldIcon, component: ImpactLeopold },
+  // { path: "/impactleopold", name: "Impact Matrix Leopold", icon: ImpactLeopoldIcon, component: ImpactLeopold },
+
 
   // { path: "/charts", name: "Charts", icon: Timeline, component: Charts },
   // { path: "/calendar", name: "Calendar", icon: DateRange, component: Calendar },

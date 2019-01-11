@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import cx from "classnames";
 import { connect } from "react-redux";
 
-import { logoutUser } from "../../actions/authActions";
+import { setCurrentUser, logoutUser } from "../../actions/authActions";
 
 
 // @material-ui/core components
@@ -20,6 +20,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Collapse from "@material-ui/core/Collapse";
 import Icon from "@material-ui/core/Icon";
 import Button from '@material-ui/core/Button';
+import store from '../../store'
 
 
 
@@ -37,6 +38,13 @@ var ps;
 // There might be something with the Hidden component from material-ui, and we didn't have access to
 // the links, and couldn't initialize the plugin.
 class SidebarWrapper extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state={
+      userName:"jj"
+    }
+  }
 
   onLogoutClick = e => {
     console.log("pico el boton logout")
@@ -79,10 +87,28 @@ class Sidebar extends React.Component {
       openTables: this.activeRoute("/tables"),
       openMaps: this.activeRoute("/maps"),
       openPages: this.activeRoute("-page"),
-      miniActive: true
+      miniActive: true,
+      userName:""
     };
     this.activeRoute.bind(this);
   }
+
+  componentDidMount(){
+
+    //Obtenemos el usuario actual
+    const userN = store.getState().auth.user.name
+    this.setState({userName:userN})
+    console.log(store.getState())
+
+    // fetch('/api/users/currentuser')
+    // .then(res=>res.json())
+    // .then(user=>{
+    //   let userNam = user.name
+    //   console.log(user.name)
+    //   this.setState({userName:userNam})
+    // });
+  }
+
   // verifies if routeName is the one active (in browser input)
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
@@ -103,6 +129,7 @@ class Sidebar extends React.Component {
       bgColor,
       rtlActive
     } = this.props;
+    const{userName} = this.state
     const itemText =
       classes.itemText +
       " " +
@@ -148,9 +175,9 @@ class Sidebar extends React.Component {
       });
     var user = (
       <div className={userWrapperClass}>
-        <div className={photo}>
-          {/* <img src={avatar} className={classes.avatarImg} alt="..." /> */}
-        </div>
+        {/* <div className={photo}>
+          <img src={avatar} className={classes.avatarImg} alt="..." />
+        </div> */}
         <List className={classes.list}>
           <ListItem className={classes.item + " " + classes.userItem}>
             <NavLink
@@ -159,7 +186,7 @@ class Sidebar extends React.Component {
               onClick={() => this.openCollapse("openAvatar")}
             >
               <ListItemText
-                primary={"User Name"}
+                primary={userName}
                 secondary={
                   <b
                     className={
@@ -540,4 +567,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default withStyles(sidebarStyle)(connect(mapStateToProps, { logoutUser })(Sidebar));
+export default withStyles(sidebarStyle)(connect(mapStateToProps, { logoutUser, setCurrentUser })(Sidebar));

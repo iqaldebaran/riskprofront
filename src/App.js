@@ -29,6 +29,7 @@ if (localStorage.jwtToken) {
   const decoded = jwt_decode(token);
   // S@et user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
+  // console.log(setCurrentUser(decoded).payload.email)
   // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {
